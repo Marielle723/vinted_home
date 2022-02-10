@@ -1,4 +1,9 @@
 /* Other rules */
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* APP.JS */
 
@@ -15,6 +20,11 @@ header img {
   width: 100px;
   object-fit: cover;
   height: auto;
+}
+
+.sell-your-articles {
+  background: turquoise;
+  color: white;
 }
 
 .big-picture {
@@ -166,4 +176,72 @@ header img {
 .no-match-container {
   font-weight: bold;
   font-size: 4rem;
+}
+
+/* SIGN UP PAGE */
+
+.signup-page {
+  background: rgb(222, 235, 243);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: 50vh;
+  margin: 0 auto;
+  /* border: red solid 3px; */
+  background: whitesmoke;
+}
+
+form p {
+  /* border: solid black 3px; */
+  width: 100%;
+}
+
+.inputs-basic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* border: red solid 3px; */
+}
+
+.inputs-basic input {
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  border-bottom-style: solid;
+  border-color: rgb(233, 78, 103);
+  width: 100%;
+  padding: 20px 70px 5px 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.checkbox {
+  padding-top: 10px;
+}
+.news-subs {
+  padding-top: 10px;
+  color: #333;
+  width: 40%;
+  font-size: 0.8rem;
+}
+
+.submit {
+  color: white;
+  font-weight: bold;
+  background: rgb(24, 136, 125);
+  padding: 10px 130px;
+}
+
+.already-account {
+  color: rgb(24, 136, 125);
+  text-align: center;
+  max-width: 100%;
 }

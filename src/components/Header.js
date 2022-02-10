@@ -1,5 +1,6 @@
 import React from "react";
 import VintedLogo from "../assets/images/Vinted-logo.svg.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,8 +9,10 @@ const Header = () => {
         <img src={VintedLogo} alt="Logo de vinted" />
         <input placeholder="Recherche des articles" name="search_input" />
         <button>S'inscrire</button>
-        <button>Se connecter</button>
-        <button>Vends tes articles</button>
+        <Link to="/signup">
+          <button>Se connecter</button>
+        </Link>
+        <button className="sell-your-articles">Vends tes articles</button>
       </header>
       <div className="big-picture">
         <div className="box-in-big-picture">
