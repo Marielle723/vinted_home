@@ -1,9 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -20,9 +22,25 @@ const Signup = () => {
     setPassword(value);
   };
 
+  const handleNewsletterChange = (event) => {
+    const value = event.target.value;
+    setNewsletter(value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, email, password);
+    try {
+      axios
+        .post("https://my-backend-final-project.herokuapp.com/user/signup", {
+          email: name,
+          username: email,
+          password: password,
+          newsletter: newsletter,
+        })
+        .then((response) => console.log(response.data));
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   return (
@@ -64,6 +82,7 @@ const Signup = () => {
             id="newsletter"
             name="newsletter"
             value="newsletter"
+            onChange={handleNewsletterChange}
           />
           <label for="newsletter">S'inscrire à notre newsletter ?</label>
         </div>
