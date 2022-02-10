@@ -62,3 +62,10 @@ header img {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.price-information {
+  width: 20px;
+  height: 20px;
+  border: 50%;
+  background: lightgrey;
+}

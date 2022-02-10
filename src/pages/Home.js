@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -27,8 +27,6 @@ const Home = () => {
     <span>En cours de chargement...</span>
   ) : (
     <div>
-      <Header />
-
       {data.offers.map((offer, index) => {
         return (
           <div className="home-wrapper">
@@ -37,8 +35,7 @@ const Home = () => {
                 <img src={`${offer.owner.account.avatar.secure_url}`} />
                 {offer.owner.account.username}
               </div>
-
-              <Link to={`{/offer/${offer._id}}`}>
+              <Link to={`/offer/${offer._id}`}>
                 {" "}
                 <img
                   className="product-image"
@@ -46,6 +43,9 @@ const Home = () => {
                   alt="photo du produit"
                 />
               </Link>
+              <p>{offer.product_price} €</p>
+              <p className="price-information">i</p>{" "}
+              {/*AJOUTER UNE NAVIGATION??*/}
             </div>
           </div>
         );
