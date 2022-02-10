@@ -38,32 +38,18 @@ const Home = () => {
                 {offer.owner.account.username}
               </div>
 
-              <img
-                className="product-image"
-                src={`${offer.product_image.secure_url}`}
-                alt="photo du produit"
-              />
+              <Link to={`{/offer/${offer._id}}`}>
+                {" "}
+                <img
+                  className="product-image"
+                  src={`${offer.product_image.secure_url}`}
+                  alt="photo du produit"
+                />
+              </Link>
             </div>
           </div>
         );
       })}
-
-      {/* <Link to={"/offer"}>Go to offer</Link> */}
-      {/* {
-        <ul className="home-offers">
-          {data.offers.map((offer, index) => {
-            return (
-              <li key={index}>
-                <div className="owner">
-                  {offer.owner.account.avatar}
-                  {offer.owner.account.username}
-                </div>
-                {offer.product_pictures}
-              </li>
-            );
-          })}
-        </ul> */}
-      {/* } */}
     </div>
   );
 };
