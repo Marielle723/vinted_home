@@ -15,10 +15,10 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers/`"
+          "https://lereacteur-vinted-api.herokuapp.com/offer/:id"
         );
-        console.log(response.data.id);
-        setData(response.data.id);
+        console.log(data.product_details);
+        setData(data.product_details);
         setIsLoading(false);
       } catch (error) {
         console.log(error.response); // contrairement au error.message d'express
@@ -32,6 +32,7 @@ const Offer = () => {
   ) : (
     <div>
       <Header />
+      je recupère l'id : {id};
     </div>
   );
 };
