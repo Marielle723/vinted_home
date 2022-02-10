@@ -29,8 +29,8 @@ const Home = () => {
     <div>
       {data.offers.map((offer, index) => {
         return (
-          <div className="home-wrapper">
-            <div key={offer._id} className="home-offers">
+          <div key={offer._id} className="home-wrapper">
+            <div className="home-offers">
               <div className="owner">
                 <img src={`${offer.owner.account.avatar.secure_url}`} />
                 {offer.owner.account.username}

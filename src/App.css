@@ -69,3 +69,81 @@ header img {
   border: 50%;
   background: lightgrey;
 }
+
+.offer-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgb(203, 208, 247);
+}
+
+.offer-pictures {
+  width: 50%;
+  /* border: solid red 3px; */
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.offer-pictures img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin: 10px;
+}
+
+.product-details {
+  width: 50%;
+  /* border: solid red 3px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  width: 80%;
+}
+
+.offer-price {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.offer-pics {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-description {
+  color: #333;
+}
+
+.account-initial {
+  background: brown;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.offer-owner-name {
+  display: flex;
+  align-items: center;
+}
