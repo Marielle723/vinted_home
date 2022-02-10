@@ -32,7 +32,10 @@ const Home = () => {
           <div key={offer._id} className="home-wrapper">
             <div className="home-offers">
               <div className="owner">
-                <img src={`${offer.owner.account.avatar.secure_url}`} />
+                <img
+                  src={`${offer.owner.account.avatar.secure_url}`}
+                  alt="seller avatar"
+                />
                 {offer.owner.account.username}
               </div>
               <Link to={`/offer/${offer._id}`}>
@@ -40,7 +43,7 @@ const Home = () => {
                 <img
                   className="product-image"
                   src={`${offer.product_image.secure_url}`}
-                  alt="photo du produit"
+                  alt="product to sell"
                 />
               </Link>
               <p>{offer.product_price} €</p>
