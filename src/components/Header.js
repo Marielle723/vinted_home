@@ -8,8 +8,10 @@ const Header = () => {
       <header>
         <img src={VintedLogo} alt="Logo de vinted" />
         <input placeholder="Recherche des articles" name="search_input" />
-        <button>S'inscrire</button>
         <Link to="/signup">
+          <button>S'inscrire</button>
+        </Link>
+        <Link to="/login">
           <button>Se connecter</button>
         </Link>
         <button className="sell-your-articles">Vends tes articles</button>

@@ -17,7 +17,7 @@ const Home = () => {
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.response); // contrairement au error.message d'express
+        console.log(error.response);
       }
     };
     fetchData();

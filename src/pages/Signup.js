@@ -5,7 +5,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [newsletter, setNewsletter] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -24,7 +24,7 @@ const Signup = () => {
 
   const handleNewsletterChange = (event) => {
     const value = event.target.value;
-    setNewsletter(value);
+    setChecked(!checked);
   };
 
   const handleSubmit = (event) => {
@@ -35,7 +35,7 @@ const Signup = () => {
           email: name,
           username: email,
           password: password,
-          newsletter: newsletter,
+          checked: checked,
         })
         .then((response) => console.log(response.data));
     } catch (error) {
@@ -77,14 +77,15 @@ const Signup = () => {
         </div>
 
         <div className="checkbox">
+          {" "}
           <input
             type="checkbox"
-            id="newsletter"
-            name="newsletter"
-            value="newsletter"
+            label="S'inscrire à notre newsletter ?"
+            value={checked}
+            id="checkbox"
+            name="checkbox"
             onChange={handleNewsletterChange}
           />
-          <label for="newsletter">S'inscrire à notre newsletter ?</label>
         </div>
 
         <p className="news-subs">
