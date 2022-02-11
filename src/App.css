@@ -245,3 +245,11 @@ h1 {
   text-align: center;
   max-width: 100%;
 }
+
+.red {
+  background-color: rgb(119, 31, 46);
+}
+
+.grey {
+  background: lightgray;
+}

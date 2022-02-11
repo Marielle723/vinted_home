@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,15 +16,21 @@ const Login = () => {
     setEmail(value);
   };
 
+  let myToken = Cookies.get("my-token");
+  console.log(myToken);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
       axios
-        .post("https://my-backend-final-project.herokuapp.com/user/login", {
+        .post("https://lereacteur-vinted-api.herokuapp.com/user/login", {
           email: email,
           password: password,
         })
-        .then((response) => console.log(response.data));
+        .then((response) => {
+          Cookies.set("my-token", response.data.token);
+          console.log(response);
+        });
     } catch (error) {
       console.log(error.response);
     }
@@ -37,7 +44,7 @@ const Login = () => {
           <div className="inputs-basic">
             <input
               placeholder="Adresse email"
-              type="text"
+              type="email"
               id="email"
               name="email"
               value={email}
@@ -55,7 +62,7 @@ const Login = () => {
           </div>
 
           <button type="submit" value="Submit" className="submit">
-            Se connected
+            Se connecter
           </button>
           <p className="already-account">
             Pas encore de compte ? Inscris-toi !

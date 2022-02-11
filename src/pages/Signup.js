@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -23,21 +24,27 @@ const Signup = () => {
   };
 
   const handleNewsletterChange = (event) => {
-    const value = event.target.value;
+    const checked = event.target.value;
     setChecked(!checked);
   };
+
+  let myToken = Cookies.get("my-token");
+  console.log(myToken);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
       axios
         .post("https://my-backend-final-project.herokuapp.com/user/signup", {
-          email: name,
-          username: email,
+          email: email,
+          username: name,
           password: password,
           checked: checked,
         })
-        .then((response) => console.log(response.data));
+        .then((response) => {
+          Cookies.set("my-token", response.data.token, { expires: 3 });
+          console.log(response.data);
+        });
     } catch (error) {
       console.log(error.response);
     }
