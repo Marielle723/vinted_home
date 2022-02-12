@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorStatus, seterrorStatus] = useState("");
+
+  const navigate = useNavigate();
 
   const handlePasswordChange = (event) => {
     const value = event.target.value;
@@ -16,9 +19,6 @@ const Login = () => {
     setEmail(value);
   };
 
-  let myToken = Cookies.get("my-token");
-  console.log(myToken);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
@@ -28,11 +28,15 @@ const Login = () => {
           password: password,
         })
         .then((response) => {
-          Cookies.set("my-token", response.data.token);
           console.log(response);
+          props.setUserToken(response.data.token);
+          navigate("/");
         });
     } catch (error) {
       console.log(error.response);
+      if (error.response.status === 401) {
+        seterrorStatus("Mauvais email et/ou mot de passe");
+      }
     }
   };
 
@@ -67,6 +71,7 @@ const Login = () => {
           <p className="already-account">
             Pas encore de compte ? Inscris-toi !
           </p>
+          <p>{errorStatus}</p>
         </form>
       </div>
     </div>

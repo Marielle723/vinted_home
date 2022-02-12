@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -28,9 +30,6 @@ const Signup = () => {
     setChecked(!checked);
   };
 
-  let myToken = Cookies.get("my-token");
-  console.log(myToken);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
@@ -42,8 +41,9 @@ const Signup = () => {
           checked: checked,
         })
         .then((response) => {
-          Cookies.set("my-token", response.data.token, { expires: 3 });
-          console.log(response.data);
+          console.log(response);
+          props.setUserToken(response.data.token);
+          navigate("/");
         });
     } catch (error) {
       console.log(error.response);
