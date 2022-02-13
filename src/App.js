@@ -28,12 +28,13 @@ function App() {
       <Header setUserToken={setUserToken} token={token} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/offers" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route
+        {/* <Route
           path="/signup"
           element={<Signup setUserToken={setUserToken} />}
-        />
-        <Route path="/login" element={<Login setUserToken={setUserToken} />} />
+        /> */}
+        {/* <Route path="/login" element={<Login setUserToken={setUserToken} />} /> */}
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>

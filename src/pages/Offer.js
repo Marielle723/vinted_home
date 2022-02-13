@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Offer = () => {
   const { id } = useParams();

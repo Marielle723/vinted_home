@@ -29,8 +29,12 @@ const Login = (props) => {
         })
         .then((response) => {
           console.log(response);
-          props.setUserToken(response.data.token);
-          navigate("/");
+          if (response.data.token) {
+            props.setUserToken(response.data.token);
+            navigate("/");
+          } else {
+            alert("Unauthorized");
+          }
         });
     } catch (error) {
       console.log(error.response);
@@ -44,6 +48,7 @@ const Login = (props) => {
     <div>
       <div className="signup-page">
         <h1>Se connecter</h1>
+
         <form onSubmit={handleSubmit}>
           <div className="inputs-basic">
             <input
