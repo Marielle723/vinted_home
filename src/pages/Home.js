@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Filter from "../components/Filter";
 
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
   const [page, setPage] = useState(4);
   const [limit, setLimit] = useState(0);
 
@@ -49,14 +49,16 @@ const Home = () => {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="4">5</option>
-            <option value="4">6</option>
-            <option value="4">7</option>
-            <option value="4">8</option>
+            {/* <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option> */}
           </select>
         </label>
 
         <button onClick={handleToutAfficher}>Tout afficher</button>
+
+        <Filter />
       </div>
 
       <div className="home-wrapper">
