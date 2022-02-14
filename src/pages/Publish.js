@@ -1,10 +1,53 @@
 import axios from "react";
 import { useState } from "axios";
 
-const Publish = () => {
-  const handleSubmit = () => {
-    console.log("Submit!");
+const Publish = (props) => {
+  const [file, setFile] = useState({});
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [state, setState] = useState("");
+  const [area, setArea] = useState("");
+  const [price, setPrice] = useState(0);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("files", file);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("brand", brand);
+    formData.append("size", size);
+    formData.append("color", color);
+    formData.append("state", state);
+    formData.append("area", area);
+    formData.append("price", price);
+
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${props.token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      alert(JSON.stringify(response.data));
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.error("An error occurred");
+      } else {
+        console.error(err.response.data.msg);
+      }
+    }
   };
+
   return (
     <div className="publish-wrapper">
       <form onSubmit={handleSubmit}>
@@ -17,8 +60,11 @@ const Publish = () => {
                 type="file"
                 id="file"
                 accept=".jpg, .jpeg, .png"
-                multiple
-              ></input>
+                // multiple
+                onChange={(event) => {
+                  setFile(event.target.files[0]);
+                }}
+              />
             </label>
           </div>
 
@@ -29,8 +75,11 @@ const Publish = () => {
               <input
                 placeholder="ex: Chemise Sézanne verte"
                 type="text"
-                id="publish_titre"
-                name="publish_titre"
+                id="publish_title"
+                name="publish_title"
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -43,6 +92,9 @@ const Publish = () => {
                 type="text"
                 id="publish-description"
                 name="publish-description"
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -57,6 +109,9 @@ const Publish = () => {
                 type="text"
                 id="publish-brand"
                 name="publish-brand"
+                onChange={(event) => {
+                  setBrand(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -69,6 +124,9 @@ const Publish = () => {
                 type="text"
                 id="publish_size"
                 name="publish_size"
+                onChange={(event) => {
+                  setSize(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -81,6 +139,9 @@ const Publish = () => {
                 type="text"
                 id="publish_color"
                 name="publish_color"
+                onChange={(event) => {
+                  setColor(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -93,6 +154,9 @@ const Publish = () => {
                 type="text"
                 id="publish-state"
                 name="publish-state"
+                onChange={(event) => {
+                  setState(event.target.value);
+                }}
               />
             </div>
             <hr />
@@ -101,10 +165,13 @@ const Publish = () => {
               {" "}
               <p>Lieu</p>
               <input
-                placeholder="0,00 €"
-                type="number"
+                placeholder="ex:Paris"
+                type="text"
                 id="publish_area"
                 name="publish_area"
+                onChange={(event) => {
+                  setArea(event.target.value);
+                }}
               />
             </div>
           </div>
@@ -113,7 +180,16 @@ const Publish = () => {
             <div className="publish-part-wrap">
               <p>Prix</p>
               <div className="checkbox-text">
-                <input type="checkbox" />
+                <input
+                  placeholder="0,00 €"
+                  type="number"
+                  id="publish_price"
+                  name="publish_price"
+                  onChange={(event) => {
+                    setPrice(event.target.value);
+                  }}
+                />
+                <input type="checkbox"></input>
                 Je suis intéressé(e) par les échanges.
               </div>
             </div>

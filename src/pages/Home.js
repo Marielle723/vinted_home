@@ -4,6 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -79,10 +82,14 @@ const Home = () => {
             <div key={offer._id} className="home-offers">
               <div className="owner-and-product">
                 <div className="owner">
-                  <img
-                    src={`${offer.owner.account.avatar.secure_url}`}
-                    alt="seller avatar"
-                  />
+                  {offer.owner.account.avatar ? (
+                    <img
+                      src={`${offer.owner.account.avatar.secure_url}`}
+                      alt="seller avatar"
+                    />
+                  ) : (
+                    <FontAwesomeIcon icon={faUser} />
+                  )}
                   {offer.owner.account.username}
                 </div>
                 <Link to={`/offer/${offer._id}`}>

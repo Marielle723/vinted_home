@@ -31,7 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/offers" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/publish" element={<Publish />} />
+        <Route path="/publish" element={<Publish token={token} />} />
         {/* <Route
           path="/signup"
           element={<Signup setUserToken={setUserToken} />}
