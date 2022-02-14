@@ -58,6 +58,16 @@ const Home = () => {
 
         <button onClick={handleToutAfficher}>Tout afficher</button>
 
+        {/* <div className="slidders">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            step="1"
+            id="my-range-slidder"
+          ></input>
+        </div> */}
+
         <Filter />
       </div>
 
