@@ -17,7 +17,7 @@ const Home = () => {
     const fetchData = async () => {
       console.log(page, limit);
 
-      setLimit(8);
+      // setLimit(8);
 
       try {
         const response = await axios.get(
@@ -33,8 +33,16 @@ const Home = () => {
     fetchData();
   }, [page, limit]);
 
-  const handlePageChange = (event) => {
-    setPage(event.target.value);
+  const handlePreviousPage = (event) => {
+    setPage(event.target.value - 1);
+  };
+
+  const handleNextPage = (event) => {
+    setPage(event.target.value + 1);
+  };
+
+  const handleLimitChange = (event) => {
+    setLimit(event.target.value);
   };
 
   const handleToutAfficher = () => {
@@ -47,19 +55,19 @@ const Home = () => {
     <>
       <Banner />
       <div className="filter-offer-page">
+        <button onClick={handlePreviousPage}>Page précédente</button>
         <label>
-          Afficher la page:
-          <select value={page} onChange={handlePageChange}>
-            <option value="1">1</option>
+          Nombre d'annonces par page:
+          <select value={limit} onChange={handleLimitChange}>
             <option value="2">2</option>
-            <option value="3">3</option>
             <option value="4">4</option>
-            {/* <option value="5">5</option>
             <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option> */}
+            <option value="8">8</option>
+            <option value="10">10</option>
           </select>
         </label>
+
+        <button onClick={handleNextPage}>Page suivante</button>
 
         <button onClick={handleToutAfficher}>Tout afficher</button>
 

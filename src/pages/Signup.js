@@ -34,7 +34,7 @@ const Signup = (props) => {
     event.preventDefault();
     try {
       axios
-        .post("https://my-backend-final-project.herokuapp.com/user/signup", {
+        .post("https://lereacteur-vinted-api.herokuapp.com/user/signup", {
           email: email,
           username: name,
           password: password,
