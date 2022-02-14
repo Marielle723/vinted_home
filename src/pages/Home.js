@@ -7,9 +7,21 @@ import Filter from "../components/Filter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+// import "./styles.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+const { createSliderWithTooltip } = Slider;
+const Range = createSliderWithTooltip(Slider.Range);
+
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const [title, setTitle] = useState("");
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(1000);
+  const [sort, setSort] = useState("price-asc");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(false);
 
@@ -21,7 +33,7 @@ const Home = () => {
 
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${title}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
         );
         console.log(response.data);
         setData(response.data);
@@ -31,7 +43,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [page, limit]);
+  }, [page, limit, title, priceMin, priceMax, sort]);
 
   const handlePreviousPage = () => {
     setPage(page - 1);
@@ -42,8 +54,29 @@ const Home = () => {
   };
 
   const handleLimitChange = (event) => {
+    event.preventDefault();
     setLimit(event.target.value);
   };
+
+  const handleAscbox = (event) => {
+    const sortType = event.target.value;
+    setSort(sortType);
+
+    // alert(radio);
+  };
+
+  const handleDescbox = (event) => {
+    const sortType = event.target.value;
+    setSort(sortType);
+  };
+
+  // const handleMin = (value) => {
+  //   setPriceMin(value);
+  // };
+
+  // const handleMax = (value) => {
+  //   setPriceMax(value);
+  // };
 
   const handleToutAfficher = () => {
     setPage(1);
@@ -72,11 +105,38 @@ const Home = () => {
           </select>
         </label>
 
-        {limit * page < data.count && (
+        {(limit * page < data.count || limit === false) && (
           <button onClick={handleNextPage}>Page suivante</button>
         )}
 
         <button onClick={handleToutAfficher}>Tout afficher</button>
+
+        <div className="price-sorting">
+          <p>Trier par prix:</p>
+
+          <label>
+            <input
+              type="radio"
+              id="croissant"
+              name="sorting"
+              value="price-asc"
+              onChange={handleAscbox}
+              checked
+            />
+            Croissant
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              id="décroissant"
+              name="sorting"
+              value="price-desc"
+              onChange={handleDescbox}
+            />
+            décroissant
+          </label>
+        </div>
 
         {/* <div className="slidders">
           <input
@@ -87,8 +147,35 @@ const Home = () => {
             id="my-range-slidder"
           ></input>
         </div> */}
+        {/* <Filter priceMax={priceMax} priceMin={priceMin} /> */}
 
-        <Filter />
+        <div className="filter-slider">
+          <p>Prix entre :</p>
+
+          <div className="sliderArea">
+            <Range
+              marks={{
+                0: `€ 0`,
+                1000: `€ 1000`,
+              }}
+              min={0}
+              max={1000}
+              defaultValue={[20, 200]}
+              allowCross={false}
+              // tabIndex={[0, 1]}
+              // value={[12, 200]}
+              onChange={(value) => {
+                setPriceMin(value[0]);
+                setPriceMax(value[1]);
+              }}
+              tipFormatter={(value) => `€ ${value}`}
+              tipProps={{
+                placement: "top",
+                visible: true,
+              }}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="home-wrapper">

@@ -327,11 +327,36 @@ h1 {
 
 /* FILTER */
 
+.price-sorting {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+}
+
+.filter-slider {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 10px;
+  font-size: 0.8rem;
+}
+
+.sliderArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 200px;
+}
+
 .filter-wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin: 2rem;
+}
+
+.turquoise {
+  color: turquoise;
 }
 
 /* The switch - the box around the slider */
