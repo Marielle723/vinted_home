@@ -45,8 +45,8 @@ const Home = () => {
     <span>En cours de chargement...</span>
   ) : (
     <>
+      <Banner />
       <div className="filter-offer-page">
-        <Banner />
         <label>
           Afficher la page:
           <select value={page} onChange={handlePageChange}>
@@ -88,7 +88,9 @@ const Home = () => {
                       alt="seller avatar"
                     />
                   ) : (
-                    <FontAwesomeIcon icon={faUser} />
+                    <p className="avatar-icon">
+                      <FontAwesomeIcon icon={faUser} />
+                    </p>
                   )}
                   {offer.owner.account.username}
                 </div>

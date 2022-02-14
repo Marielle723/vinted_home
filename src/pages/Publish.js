@@ -1,5 +1,6 @@
-import axios from "react";
-import { useState } from "axios";
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
 
 const Publish = (props) => {
   const [file, setFile] = useState({});
@@ -188,7 +189,7 @@ const Publish = (props) => {
                   onChange={(event) => {
                     setPrice(event.target.value);
                   }}
-                />
+                ></input>
                 <input type="checkbox"></input>
                 Je suis intéressé(e) par les échanges.
               </div>
