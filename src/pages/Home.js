@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Banner from "../components/Banner";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
@@ -42,6 +43,7 @@ const Home = () => {
   ) : (
     <>
       <div className="filter-offer-page">
+        <Banner />
         <label>
           Afficher la page:
           <select value={page} onChange={handlePageChange}>

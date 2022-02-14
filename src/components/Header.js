@@ -1,6 +1,7 @@
 import React from "react";
+
 import VintedLogo from "../assets/images/Vinted-logo.svg.png";
-import tear from "../assets/images/tear.svg";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +9,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Modal_login from "./Modal_login";
 import Modal_signup from "./Modal_signup";
 import { useState } from "react";
+
+import Publish from "../pages/Publish";
 
 const Header = (props) => {
   const [isOpenLogin, setisOpenLogin] = useState(false);
@@ -59,16 +62,11 @@ const Header = (props) => {
             ></Modal_login>
           </div>
         )}
-        <button className="sell-your-articles">Vends tes articles</button>
-      </header>
 
-      <div className="big-picture">
-        <div className="box-in-big-picture">
-          <h2>Prêt à faire du tri dans vos placards?</h2>
-          <button>Commencez à vendre</button>
-        </div>
-        <img src={tear} alt="page tear effect" />
-      </div>
+        <Link to="/publish">
+          <button className="sell-your-articles">Vends tes articles</button>
+        </Link>
+      </header>
     </>
   );
 };
