@@ -3,33 +3,34 @@ import axios from "axios";
 import { useState } from "react";
 
 const Publish = (props) => {
-  const [file, setFile] = useState({});
+  const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [state, setState] = useState("");
-  const [area, setArea] = useState("");
+  const [condition, setCondition] = useState("");
+  const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("files", file);
+    formData.append("picture", picture);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("brand", brand);
     formData.append("size", size);
     formData.append("color", color);
-    formData.append("state", state);
-    formData.append("area", area);
+    formData.append("condition", condition);
+    formData.append("city", city);
     formData.append("price", price);
 
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        // "https://my-backend-final-project.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -63,7 +64,7 @@ const Publish = (props) => {
                 accept=".jpg, .jpeg, .png"
                 // multiple
                 onChange={(event) => {
-                  setFile(event.target.files[0]);
+                  setPicture(event.target.files[0]);
                 }}
               />
             </label>
@@ -156,7 +157,7 @@ const Publish = (props) => {
                 id="publish-state"
                 name="publish-state"
                 onChange={(event) => {
-                  setState(event.target.value);
+                  setCondition(event.target.value);
                 }}
               />
             </div>
@@ -171,7 +172,7 @@ const Publish = (props) => {
                 id="publish_area"
                 name="publish_area"
                 onChange={(event) => {
-                  setArea(event.target.value);
+                  setCity(event.target.value);
                 }}
               />
             </div>
