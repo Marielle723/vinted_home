@@ -10,14 +10,14 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(4);
-  const [limit, setLimit] = useState(0);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       console.log(page, limit);
 
-      // setLimit(8);
+      // setPage(1);
 
       try {
         const response = await axios.get(
@@ -33,12 +33,12 @@ const Home = () => {
     fetchData();
   }, [page, limit]);
 
-  const handlePreviousPage = (event) => {
-    setPage(event.target.value - 1);
+  const handlePreviousPage = () => {
+    setPage(page - 1);
   };
 
-  const handleNextPage = (event) => {
-    setPage(event.target.value + 1);
+  const handleNextPage = () => {
+    setPage(page + 1);
   };
 
   const handleLimitChange = (event) => {
@@ -47,7 +47,7 @@ const Home = () => {
 
   const handleToutAfficher = () => {
     setPage(1);
-    setLimit(0);
+    setLimit(false);
   };
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -55,19 +55,26 @@ const Home = () => {
     <>
       <Banner />
       <div className="filter-offer-page">
-        <button onClick={handlePreviousPage}>Page précédente</button>
+        {/* PAR LA PAR PAGINATION*********** **PAGINATION***************PAGINATION *************************** */}
+        {page > 1 && (
+          <button onClick={handlePreviousPage}>Page précédente</button>
+        )}
         <label>
           Nombre d'annonces par page:
           <select value={limit} onChange={handleLimitChange}>
+            <option defaultValue="false">All</option>
             <option value="2">2</option>
             <option value="4">4</option>
             <option value="6">6</option>
             <option value="8">8</option>
             <option value="10">10</option>
+            <option value="10">12</option>
           </select>
         </label>
 
-        <button onClick={handleNextPage}>Page suivante</button>
+        {limit * page < data.count && (
+          <button onClick={handleNextPage}>Page suivante</button>
+        )}
 
         <button onClick={handleToutAfficher}>Tout afficher</button>
 
