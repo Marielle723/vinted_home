@@ -9,17 +9,25 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Modal_login from "./Modal_login";
 import Modal_signup from "./Modal_signup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Publish from "../pages/Publish";
 
 const Header = (props) => {
+  const navigate = useNavigate();
+
   const [isOpenLogin, setisOpenLogin] = useState(false);
   const [isOpenSignup, setisOpenSignup] = useState(false);
 
   return (
     <>
       <header>
-        <img src={VintedLogo} alt="Logo de vinted" />
+        <img
+          src={VintedLogo}
+          alt="Logo de vinted"
+          onClick={() => navigate("/")}
+          className="logo-vinted"
+        />
         <div className="search-input">
           <div className="search-icon">
             <FontAwesomeIcon icon={faSearch} />
@@ -30,7 +38,7 @@ const Header = (props) => {
         {props.token ? (
           <Link to="/">
             <button
-              className="red"
+              className="connection red"
               onClick={() => {
                 props.setUserToken(null);
               }}

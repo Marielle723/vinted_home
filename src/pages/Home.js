@@ -89,7 +89,9 @@ const Home = () => {
       <div className="filter-offer-page">
         {/* PAR LA PAR PAGINATION*********** **PAGINATION***************PAGINATION *************************** */}
         {page > 1 && (
-          <button onClick={handlePreviousPage}>Page précédente</button>
+          <button className="filter" onClick={handlePreviousPage}>
+            Page précédente
+          </button>
         )}
         <label>
           Nombre d'annonces par page:
@@ -105,10 +107,14 @@ const Home = () => {
         </label>
 
         {(limit * page < data.count || limit === false) && (
-          <button onClick={handleNextPage}>Page suivante</button>
+          <button className="filter" onClick={handleNextPage}>
+            Page suivante
+          </button>
         )}
 
-        <button onClick={handleToutAfficher}>Tout afficher</button>
+        <button className="filter" onClick={handleToutAfficher}>
+          Tout afficher
+        </button>
 
         <div className="price-sorting">
           <p>Trier par prix:</p>
@@ -120,7 +126,8 @@ const Home = () => {
               name="sorting"
               value="price-asc"
               onChange={handleAscbox}
-              checked
+              defaultChecked
+              // checked
             />
             Croissant
           </label>

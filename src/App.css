@@ -7,6 +7,13 @@ p {
   box-sizing: border-box;
 }
 
+/* GENERAL */
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
 /* APP.JS */
 
 header {
@@ -16,6 +23,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.logo-vinted:hover {
+  cursor: pointer;
 }
 
 header img {
@@ -56,15 +67,24 @@ header img {
 }
 
 .box-in-big-picture {
-  width: 20%;
+  width: 15%;
   height: 80%;
   background: white;
   margin-left: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
 }
 
 .box-in-big-picture img {
   border: black solid 3px;
+}
+
+.box-in-big-picture button {
+  color: #333;
+  background: turquoise;
 }
 
 /* HOME PAGE  */
@@ -150,44 +170,57 @@ header img {
 
 /* OFFER PAGE */
 
-.offer-wrapper {
-  margin-top: 30px;
+.offer-page-wrapper {
+  /* border: solid black 5px; */
+  background: #ccc;
   width: 100%;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background: rgb(203, 208, 247);
+  height: 95vh;
 }
 
-.offer-pictures {
-  width: 100%;
-  border: solid rgb(243, 151, 151) 3px;
-  height: 100%;
+.offer-wrapper {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  overflow-x: scroll;
+  /* background: rgb(203, 208, 247); */
+}
+
+.offer-pictures {
+  width: 50%;
+  min-height: 100%;
+  border: goldenrod solid 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offer-pics {
+  width: 50%;
+  height: 100%;
+  border: red solid 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .offer-pictures img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  margin: 10px;
   border: dashed rgb(46, 8, 8) 3px;
 }
 
 .product-details {
-  width: 50%;
-  /* border: solid red 3px; */
+  width: 40%;
+  border: solid red 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 20px;
   background: white;
+  font-size: 0.5rem;
+  margin: 10px;
 }
 
 .offer-details {
@@ -195,11 +228,15 @@ header img {
   flex-direction: column;
   align-items: center;
   width: 80%;
+  border: green solid 3px;
+
+  margin: 2px 0;
 }
 
 .offer-price {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.2rem;
+  padding: 5px;
 }
 
 .offer-pics {
@@ -211,17 +248,20 @@ header img {
 .product-name {
   font-size: 1rem;
   font-weight: bold;
+  padding: 10px;
 }
 
 .product-description {
   color: #333;
+  font-size: 0.7rem;
+  padding: 5px;
 }
 
 .account-initial {
   background: brown;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   text-align: center;
 }
@@ -229,12 +269,15 @@ header img {
 .offer-owner-name {
   display: flex;
   align-items: center;
+  font-size: 0.7rem;
+  padding: 5px;
 }
 
 .acheter {
   color: white;
   background: turquoise;
-  padding: 5px 10px;
+  padding: 5px 50px;
+  font-weight: bold;
 }
 
 /* NO MATCH PAGE  */
@@ -527,4 +570,43 @@ input:checked + .slider:before {
 .publish-submit-part-wrap button {
   background: turquoise;
   color: white;
+}
+
+.payment-wrapper {
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+}
+
+.payment-details-wrap {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.payment-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: #333 2px solid;
+  padding: 10px;
+}
+
+.payment-title {
+  color: #333;
+  font-size: 0.8rem;
+}
+
+span {
+  font-weight: bold;
+}
+
+.payment-wrapper button {
+  color: white;
+  font-weight: 600;
+  background: rgb(43, 236, 43);
+  padding: 5px 100px;
 }

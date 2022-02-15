@@ -3,9 +3,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 const Publish = (props) => {
+  const navigate = useNavigate();
+
   const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -15,6 +15,7 @@ const Publish = (props) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();

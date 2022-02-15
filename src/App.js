@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("UserToken") || null);
@@ -29,14 +30,15 @@ function App() {
       <Header setUserToken={setUserToken} token={token} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/offers" element={<Home />} />
+        <Route path="/payment" element={<Payment token={token} />} />
+        <Route path="/offers" element={<Home token={token} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/publish" element={<Publish token={token} />} />
         {/* <Route
           path="/signup"
           element={<Signup setUserToken={setUserToken} />}
         /> */}
-        {/* <Route path="/login" element={<Login setUserToken={setUserToken} />} /> */}
+        <Route path="/login" element={<Login setUserToken={setUserToken} />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
