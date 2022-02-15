@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+
+const navigate = useNavigate();
 
 const Publish = (props) => {
   const [picture, setPicture] = useState({});
@@ -41,6 +44,14 @@ const Publish = (props) => {
       );
 
       alert(JSON.stringify(response.data));
+      if (response.data._id) {
+        // naviguer vers la page de l'annonce qui vient d'être créée
+        navigate(`/offer/${response.data._id}`);
+      } else {
+        setErrorMessage(
+          "Les champs Title, Price et Picture sont obligatoires !"
+        );
+      }
     } catch (err) {
       if (err.response.status === 500) {
         console.error("An error occurred");
@@ -50,7 +61,7 @@ const Publish = (props) => {
     }
   };
 
-  return (
+  return props.token ? (
     <div className="publish-wrapper">
       <form onSubmit={handleSubmit}>
         <div className="publish-boxes-wrapper">
@@ -203,6 +214,8 @@ const Publish = (props) => {
         </div>
       </form>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 };
 

@@ -1,9 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Banner from "../components/Banner";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Filter from "../components/Filter";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
