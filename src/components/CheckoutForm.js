@@ -1,9 +1,12 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = ({ title, amount }) => {
+const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,7 +20,7 @@ const CheckoutForm = ({ title, amount }) => {
     // Demande de création d'un token via l'API Stripe
     // On envoie les données bancaires dans la requête
     const stripeResponse = await stripe.createToken(cardElement, {
-      name: "L'id de l'acheteur",
+      name: props._id,
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
@@ -28,8 +31,8 @@ const CheckoutForm = ({ title, amount }) => {
       "https://lereacteur-vinted-api.herokuapp.com/payment",
       {
         stripeToken,
-        title,
-        amount,
+        amount: props.price,
+        title: props.title,
       }
     );
     console.log(response.data);

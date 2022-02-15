@@ -144,17 +144,6 @@ const Home = () => {
           </label>
         </div>
 
-        {/* <div className="slidders">
-          <input
-            type="range"
-            min="1"
-            max="100"
-            step="1"
-            id="my-range-slidder"
-          ></input>
-        </div> */}
-        {/* <Filter priceMax={priceMax} priceMin={priceMin} /> */}
-
         <div className="filter-slider">
           <p>Prix entre :</p>
 
@@ -202,6 +191,7 @@ const Home = () => {
                   )}
                   {offer.owner.account.username}
                 </div>
+
                 <Link to={`/offer/${offer._id}`}>
                   {" "}
                   <img

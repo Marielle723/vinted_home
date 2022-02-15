@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Header from "./components/Header";
 import NoMatch from "./pages/NoMatch";
-import Signup from "./pages/Signup";
+// import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
 import { useState } from "react";
@@ -32,7 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/payment" element={<Payment token={token} />} />
         <Route path="/offers" element={<Home token={token} />} />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
         {/* <Route
           path="/signup"

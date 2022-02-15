@@ -1,10 +1,8 @@
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Payment from "./Payment";
-import Modal_login from "../components/Modal_login";
 
 const responsive = {
   desktop: {

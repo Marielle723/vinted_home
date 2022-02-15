@@ -44,7 +44,7 @@ const Publish = (props) => {
         }
       );
 
-      alert(JSON.stringify(response.data));
+      // alert(JSON.stringify(response.data));
       if (response.data._id) {
         // naviguer vers la page de l'annonce qui vient d'être créée
         navigate(`/offer/${response.data._id}`);
@@ -216,7 +216,7 @@ const Publish = (props) => {
       </form>
     </div>
   ) : (
-    <Navigate to="/" />
+    <Navigate to="/Login" />
   );
 };
 

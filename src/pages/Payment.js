@@ -1,8 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
-const Payment = () => {
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "../components/CheckoutForm";
+
+const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+
+const Payment = (props) => {
   const location = useLocation();
   const { title } = location.state;
   const { price } = location.state;
@@ -30,18 +37,24 @@ const Payment = () => {
 
         <div className="payment-line">
           <p className="payment-title">Total</p>
-          <p className="">{total} €</p>
+          <p className="">{total.toFixed(2).replace(".", ",")} €</p>
         </div>
 
         <p className="text-before-stripe">
           Il ne vous reste plus qu'une étape pour vous offrir{" "}
-          <span>{title}</span>. Vous allez payer <span>{total}</span> (frais de
+          <span>{title}</span>. Vous allez payer
+          <span>{total.toFixed(2).replace(".", ",")} €</span> (frais de
           production et frais de port inclus)
         </p>
 
         {/* STRIPE TRUC */}
+        <div className="stripe">
+          <Elements stripe={stripePromise}>
+            <CheckoutForm _id={props._id} price={price} title={title} />
+          </Elements>
+        </div>
 
-        <button className="pay">Pay</button>
+        {/* <button className="pay"> </button> */}
       </div>
     </div>
   );

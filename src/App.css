@@ -79,7 +79,7 @@ header img {
 }
 
 .box-in-big-picture img {
-  border: black solid 3px;
+  /* border: black solid 3px; */
 }
 
 .box-in-big-picture button {
@@ -188,7 +188,7 @@ header img {
 .offer-pictures {
   width: 50%;
   min-height: 100%;
-  border: goldenrod solid 3px;
+  /* border: goldenrod solid 3px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -197,7 +197,7 @@ header img {
 .offer-pics {
   width: 50%;
   height: 100%;
-  border: red solid 2px;
+  /* border: red solid 2px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -207,12 +207,12 @@ header img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: dashed rgb(46, 8, 8) 3px;
+  /* border: dashed rgb(46, 8, 8) 3px; */
 }
 
 .product-details {
   width: 40%;
-  border: solid red 3px;
+  /* border: solid red 3px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,7 +228,7 @@ header img {
   flex-direction: column;
   align-items: center;
   width: 80%;
-  border: green solid 3px;
+  /* border: green solid 3px; */
 
   margin: 2px 0;
 }
@@ -273,7 +273,7 @@ header img {
   padding: 5px;
 }
 
-.acheter {
+.buying {
   color: white;
   background: turquoise;
   padding: 5px 50px;
@@ -392,6 +392,7 @@ h1 {
 }
 
 .filter-wrapper {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -476,7 +477,7 @@ input:checked + .slider:before {
 /* PAGINATION */
 .filter-offer-page {
   border: turquoise 3px solid;
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-around;
 }
@@ -484,7 +485,7 @@ input:checked + .slider:before {
 /* MODAL */
 
 .modal {
-  background: pink;
+  /* background: pink; */
   position: fixed;
   max-width: 40%;
   max-height: 80vh;
@@ -507,7 +508,7 @@ input:checked + .slider:before {
 .publish-file-part-wrap {
   width: 80%;
   height: 120px;
-  border: dashed red 1px;
+  /* border: dashed red 1px; */
   display: flex;
   align-items: center;
   justify-content: center;
