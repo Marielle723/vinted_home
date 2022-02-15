@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
@@ -30,7 +29,7 @@ const CheckoutForm = (props) => {
     const response = await axios.post(
       "https://lereacteur-vinted-api.herokuapp.com/payment",
       {
-        stripeToken,
+        token: stripeToken,
         amount: props.price,
         title: props.title,
       }
@@ -45,8 +44,8 @@ const CheckoutForm = (props) => {
   return (
     <>
       {!completed ? (
-        <form onSubmit={handleSubmit}>
-          <CardElement />
+        <form className="form-payment" onSubmit={handleSubmit}>
+          <CardElement className="cardElement" />
           <button type="submit">Valider</button>
         </form>
       ) : (

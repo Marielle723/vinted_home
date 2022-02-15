@@ -1,4 +1,5 @@
 import "./App.css";
+import Payment from "./pages/Payment";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
@@ -9,7 +10,6 @@ import Login from "./pages/Login";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import Publish from "./pages/Publish";
-import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("UserToken") || null);

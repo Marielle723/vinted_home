@@ -1,18 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 
-const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
-
 const Payment = (props) => {
   const location = useLocation();
   const { title } = location.state;
   const { price } = location.state;
+
+  const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
 
   const [protection, setProtection] = useState(0.4);
   const [port, setPort] = useState(0.8);
@@ -48,11 +47,10 @@ const Payment = (props) => {
         </p>
 
         {/* STRIPE TRUC */}
-        <div className="stripe">
-          <Elements stripe={stripePromise}>
-            <CheckoutForm _id={props._id} price={price} title={title} />
-          </Elements>
-        </div>
+
+        <Elements stripe={stripePromise}>
+          <CheckoutForm _id={props._id} price={price} title={title} />
+        </Elements>
 
         {/* <button className="pay"> </button> */}
       </div>
