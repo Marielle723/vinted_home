@@ -44,8 +44,8 @@ const CheckoutForm = (props) => {
   return (
     <>
       {!completed ? (
-        <form className="form-payment" onSubmit={handleSubmit}>
-          <CardElement className="cardElement" />
+        <form onSubmit={handleSubmit}>
+          <CardElement />
           <button type="submit">Valider</button>
         </form>
       ) : (
