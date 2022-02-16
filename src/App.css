@@ -290,14 +290,16 @@ header img {
 }
 
 form {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   width: 80%;
   height: 60vh;
   margin: 0 auto;
   /* border: red solid 3px; */
   background: whitesmoke;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 form p {
@@ -322,8 +324,9 @@ form p {
   border-right-style: hidden;
   border-bottom-style: solid;
   border-color: rgb(233, 78, 103);
-  width: 100%;
+  width: 80%;
   padding: 20px 70px 5px 5px;
+  margin: 0 auto;
 }
 
 h1 {
